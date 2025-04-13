@@ -76,5 +76,16 @@
       <h1>Parabéns atrasado, minha irmã</h1>
     </header>
     <!-- Aqui você pode colocar mais conteúdo se quiser -->
-  </body>
+       <h2><em>Ela virou uma borboleta, e sempre que precisamos esta aqui</em></h2>
+    <!-- Coloca o script no final para garantir o carregamento correto -->
+    <script>
+      for (let i = 1; i <= 17; i++) {
+        document.write(`
+          <div class="moldura">
+            <img src="IMG${i}.jpg" alt="Imagem ${i}">
+          </div>
+        `);
+      }
+    </script>
+</body>
 </html>
