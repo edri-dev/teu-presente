@@ -11,91 +11,124 @@
         font-family: 'Baskerville Old Face', serif;
         color: #8B0000;
         text-align: center;
+      }
+
+      /* Borboletas flutuantes */
+      @keyframes flutuar {
+        0% { transform: translateY(0) rotate(var(--rotate)); }
+        50% { transform: translateY(-10px) rotate(calc(var(--rotate) + 3deg)); }
+        100% { transform: translateY(0) rotate(var(--rotate)); }
+      }
+
+      .borboleta {
+        position: absolute;
+        width: 50px;
+        height: 50px;
         background-image: url('borboletas-lilas.png');
+        background-size: contain;
         background-repeat: no-repeat;
-        background-position: center top;
-        background-size: cover;
+        opacity: 0.6;
+        z-index: 0;
+        pointer-events: none;
+        animation: flutuar 4s ease-in-out infinite;
       }
-     #borboletas {
-       position: absolute; /* ou relative, dependendo do layout */
-       width: auto;
-       height: auto;
-       max-width: 100px; /* ou o tamanho real da imagem */
-       image-rendering: auto;
-      }
-      
+
+      .borboleta1 { top: 5%; left: 10%; --rotate: -15deg; animation-delay: 0s; }
+      .borboleta2 { top: 20%; right: 5%; --rotate: 10deg; animation-delay: 1s; }
+      .borboleta3 { top: 45%; left: 20%; --rotate: -5deg; animation-delay: 2s; }
+      .borboleta4 { bottom: 20%; right: 15%; --rotate: 20deg; animation-delay: 0.5s; }
+      .borboleta5 { bottom: 8%; left: 10%; --rotate: -10deg; animation-delay: 1.5s; }
+
       /* Cabeçalho lilás */
       header {
         background-color: #A27DA8;
-        padding: 40px 20px;
+        padding: 30px 15px;
         border-bottom: 4px solid #A27DA8;
-        font-size: 2em;
+        font-size: 1.8em;
+        z-index: 1;
+        position: relative;
       }
 
-      .container {
-        padding: 20px;
-      }
-
-      /* Frases centrais */
-      h1, h2, h3, p {
-        margin: 20px auto;
-        max-width: 800px;
-        line-height: 1.6;
-      }
-      h2 {
-  color: #A27DA8;
-  font-size: 1.8em;
-  margin-top: 40px;
-}
-
-      /* Imagens centralizadas */
-      img {
-        display: block;
-        margin: 30px auto;
-        max-width: 90%;
-        border-radius: 12px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      }
-
-      /* Bordas com folhas lilás */
+      /* Container principal */
       .container {
         border: 6px double #D8BFD8;
-        padding: 30px;
-        margin: 40px auto;
-        max-width: 900px;
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 90%;
         background-color: rgba(255, 255, 255, 0.95);
         background-image: url('folhas-lilas.png');
         background-repeat: repeat;
         background-size: contain;
         border-radius: 20px;
+        z-index: 1;
+        position: relative;
+      }
+
+      /* Frases centrais */
+      h1, h2, h3, p {
+        margin: 20px auto;
+        max-width: 90%;
+        line-height: 1.6;
+      }
+
+      h2 {
+        color: #A27DA8;
+        font-size: 1.5em;
+        margin-top: 30px;
+      }
+
+      /* Imagens centralizadas */
+      img {
+        display: block;
+        margin: 30px auto;
+        max-width: 100%;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+        position: relative;
       }
 
       /* Responsividade mínima */
       @media (max-width: 600px) {
         header {
-          font-size: 1.5em;
+          font-size: 1.4em;
+          padding: 20px 10px;
+        }
+        .borboleta {
+          width: 40px;
+          height: 40px;
         }
       }
     </style>
   </head>
   <body>
+
+    <!-- Borboletas flutuantes no fundo -->
+    <div class="borboleta borboleta1"></div>
+    <div class="borboleta borboleta2"></div>
+    <div class="borboleta borboleta3"></div>
+    <div class="borboleta borboleta4"></div>
+    <div class="borboleta borboleta5"></div>
+
+    <!-- Conteúdo principal -->
     <header>
       <h1>Parabéns atrasado, minha irmã</h1>
     </header>
-    <!-- Aqui você pode colocar mais conteúdo se quiser -->
-       <h2><em>Ela virou uma borboleta, e sempre que precisamos esta aqui</em></h2>
-    <!-- Coloca o script no final para garantir o carregamento correto -->
-    
-        <img id="borboletas" src="caminho/para/borboletas.png" style="width: auto; height: auto;" />
-    
+
+    <div class="container">
+      <h2><em>Ela virou uma borboleta, e sempre que precisamos está aqui</em></h2>
+    </div>
+
+    <!-- Script para gerar as imagens -->
     <script>
       for (let i = 1; i <= 17; i++) {
         document.write(`
-          <div class="moldura">
+          <div class="container">
             <img src="IMG${i}.jpg" alt="Imagem ${i}">
           </div>
         `);
       }
     </script>
-</body>
+
+  </body>
 </html>
